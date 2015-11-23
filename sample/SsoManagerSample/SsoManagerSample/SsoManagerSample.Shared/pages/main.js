@@ -7,11 +7,7 @@
         ready: function (element, options) {
             var startButton = element.querySelector("#startButton");
             startButton.addEventListener("click", function () {
-                console.log("Started");
-                clientIdPhone = "5dcbbc877e9955e3b29d7ca0baa4c7c7";
-                clientIdTabletAndDesktop = "5dcbbc877e9955e3b29d7ca0baa4c7c6";
-                endpoint = "https://nonweb.demo.surfconext.nl/php-oauth-as/authorize.php";
-                Surfnet.Nonweb.Sso.SSOManager._getInstance().authenticate(clientIdPhone, clientIdTabletAndDesktop, endpoint, function (isError, message) {
+                Surfnet.Nonweb.Sso.SSOManager._getInstance().authenticate("5dcbbc877e9955e3b29d7ca0baa4c7c7", "5dcbbc877e9955e3b29d7ca0baa4c7c6", "https://nonweb.demo.surfconext.nl/php-oauth-as/authorize.php", function (isError, message) {
                     console.log("IsError: " + isError);
                     console.log("Message: " + message);
                 });
