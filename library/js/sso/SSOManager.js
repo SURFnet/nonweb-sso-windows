@@ -6,6 +6,7 @@
     WinJS.Namespace.define("Surfnet.Nonweb.Sso", {
         SSOManager: WinJS.Class.define(
             function init() {
+
             },
             {
                 authenticate: function (clientIdPhone, clientIdTabletAndDesktop, endpoint, callbackFunction) {
@@ -42,7 +43,7 @@
                         Windows.Security.Authentication.Web.WebAuthenticationBroker.authenticateAndContinue(startURI);
                     }
                 },
-                onAppActivated: function(app, activation, navigation) {
+                onAppActivated: function(args, activation) {
                     if (args.detail.kind == activation.ActivationKind.webAuthenticationBrokerContinuation) {
                         //take oauth response and continue login process on Windows Phone 8.1
                         var token = "";
@@ -69,14 +70,14 @@
                 }
             },
             {
-                _instance = null,
+                _instance: null,
                 _getInstance: function() {
-                    if (_instance == null) {
-                        _instance = new SSOManager();
+                    if (Surfnet.Nonweb.Sso.SSOManager._instance == null) {
+                        Surfnet.Nonweb.Sso.SSOManager._instance = new Surfnet.Nonweb.Sso.SSOManager();
                     }
-                    return _instance;
+                    return Surfnet.Nonweb.Sso.SSOManager._instance;
                 }
-            },
-        );
+            }
+        )
     });
 })();

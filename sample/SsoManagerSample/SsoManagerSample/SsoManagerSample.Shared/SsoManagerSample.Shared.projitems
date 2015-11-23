@@ -7,5 +7,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)js\default.js" />
+    <Content Include="$(MSBuildThisFileDirectory)js\navigator.js" />
+    <Content Include="$(MSBuildThisFileDirectory)js\SSOManager.js" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\main.html" />
+    <Content Include="$(MSBuildThisFileDirectory)pages\main.js" />
   </ItemGroup>
 </Project>
