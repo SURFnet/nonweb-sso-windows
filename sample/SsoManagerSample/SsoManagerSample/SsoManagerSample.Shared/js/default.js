@@ -11,6 +11,7 @@
 
 
     app.onactivated = function (args) {
+        // This was added to catch the app activation on phone
         if (Surfnet.Nonweb.Sso.SSOManager._getInstance().onAppActivated(args, activation)) {
             return;
         }
@@ -59,13 +60,14 @@
         // asynchronous operation before your application is suspended, call
         // args.setPromise().
     };
+
+    /** If you wish to catch errors and display them in a dialog, uncomment this
     app.onerror = function (e) {
-        var dialog = new Windows.UI.Popups.MessageDialog(
-        e.detail.stack, e.detail.message);
-
+        var dialog = new Windows.UI.Popups.MessageDialog(e.detail.stack, e.detail.message);
         dialog.showAsync().done();
-
         return true;
     };
+    **/
+
     app.start();
 })();
