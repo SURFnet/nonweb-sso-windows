@@ -3,6 +3,12 @@ SURFnet SSO Authentication library for Windows (WinJS)
 
 ### Integration in a WinJS app
 
+##### Build requirements
+* PC runnning Windows 8.1+
+* Visual Studio 2015 Community with Universal App development SDKs installed
+
+##### Integration steps
+
 1. Copy the file [SSOManager.js](library/js/sso/SSOManager.js) inside your WinJS project (preferably inside the *Shared* project, if you are targeting multiple platforms, and intend to use SSO on all of them).
 2. Don't forget to add the file inside your Visual Studio project after copying the file in the folder. Right-click on the project, `Add -> Existing item...` and navigate to where you added the file and select it. It should appear in *the Solution Explorer* now.
 3. Now you have to register your application as an SSO client at the identity provider configuration. For this you need the callback URL of your application, which you can find out by checking the return value of `Surfnet.Nonweb.Sso.SSOManager._getInstance().getCurrentApplicationCallbackUri()`. Note that the phone and tablet/desktop application are separate applications, and have a different URL, so they need different client IDs too (so you have to register 2 clients).
@@ -33,3 +39,6 @@ SURFnet SSO Authentication library for Windows (WinJS)
     The callback function will be executed when the authentication flow has come to an end.
     If the parameter `isError` is true, then the `message` parameter contains the error message.
     If it is false, the `message` parameter will contain the OAuth2.0 authentication token.
+
+###### Platform support
+The SDK can be used in WinJS projects targeting Windows 8.1+ on phones, tablets and desktops (selectively or in a universal app as well).
