@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurfnetSSO", "SurfnetSSO\SurfnetSSO.csproj", "{B1D79E96-5D15-4A3C-9AB2-129A3D0C3BA9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurfnetSSO.Platform.Net45", "SurfnetSSO.Platform.Net45\SurfnetSSO.Platform.Net45.csproj", "{A8C1DF63-2C06-429C-8E77-951A1F46D5F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B1D79E96-5D15-4A3C-9AB2-129A3D0C3BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1D79E96-5D15-4A3C-9AB2-129A3D0C3BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1D79E96-5D15-4A3C-9AB2-129A3D0C3BA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8C1DF63-2C06-429C-8E77-951A1F46D5F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8C1DF63-2C06-429C-8E77-951A1F46D5F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8C1DF63-2C06-429C-8E77-951A1F46D5F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8C1DF63-2C06-429C-8E77-951A1F46D5F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
