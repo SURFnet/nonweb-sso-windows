@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurfnetSSO", "SurfnetSSO\Su
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurfnetSSO.Platform.Net45", "SurfnetSSO.Platform.Net45\SurfnetSSO.Platform.Net45.csproj", "{A8C1DF63-2C06-429C-8E77-951A1F46D5F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net45Sample", "..\..\sample\Net45Sample\Net45Sample.csproj", "{95CD1608-389E-4472-894B-0D08B64D79B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A8C1DF63-2C06-429C-8E77-951A1F46D5F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8C1DF63-2C06-429C-8E77-951A1F46D5F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8C1DF63-2C06-429C-8E77-951A1F46D5F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95CD1608-389E-4472-894B-0D08B64D79B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95CD1608-389E-4472-894B-0D08B64D79B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95CD1608-389E-4472-894B-0D08B64D79B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95CD1608-389E-4472-894B-0D08B64D79B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
