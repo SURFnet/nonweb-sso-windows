@@ -9,8 +9,8 @@ namespace SurfnetSSO {
     /// </summary>
     public class WinFormsSSOManager : SSOManager {
 
-        public static void authorize(WebBrowser webBrowser, String consumerId, String endpoint, String callbackUrl) {
-            Uri uri = authorize(consumerId, endpoint, callbackUrl);
+        public static void Authorize(WebBrowser webBrowser, string consumerId, string endpoint, string callbackUrl) {
+            Uri uri = GetAuthorizationUri(consumerId, endpoint, callbackUrl);
 
             webBrowser.LocationChanged += (sender, e) => {
                 _webLocationChanged(webBrowser.Url, callbackUrl);
@@ -25,8 +25,8 @@ namespace SurfnetSSO {
             webBrowser.Navigate(uri.AbsoluteUri);
         }
 
-        private static void _webLocationChanged(Uri uri, String callbackUrl) {
-            var args = extractArgsFromUrlWhenReady(uri.AbsoluteUri, callbackUrl);
+        private static void _webLocationChanged(Uri uri, string callbackUrl) {
+            var args = ExtractArgsFromUrlWhenReady(uri.AbsoluteUri, callbackUrl);
             if (args != null) {
                 OnAuthorizationFinished(args);
             }

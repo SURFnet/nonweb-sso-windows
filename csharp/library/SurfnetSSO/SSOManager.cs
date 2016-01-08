@@ -8,13 +8,13 @@ namespace SurfnetSSO {
         public static event AuthorizationEventHandler AuthorizationFinished;
 
         /// <summary>
-        /// Starts the authorization flow against the server.
+        /// Returns the URI for the authorization flow.
         /// </summary>
         /// <param name="consumerId">The consumer ID of this application</param>
         /// <param name="endpoint">The URL of the server</param>
         /// <param name="endpoint">The path relative to the URL which points to the authentication page</param>
         /// <param name="callbackUrl">The callback URL which will be invoked by the server at the end of the flow</param>
-        public static Uri authorize(string consumerId, string endpoint, string callbackUrl) {
+        public static Uri GetAuthorizationUri(string consumerId, string endpoint, string callbackUrl) {
             if (string.IsNullOrEmpty(consumerId)) {
                 throw new ArgumentNullException("Consumer ID can not be empty!");
             }
@@ -31,12 +31,12 @@ namespace SurfnetSSO {
             return new Uri(url, UriKind.Absolute);
         }
 
-        public static bool isCallbackUrl(string url, string callbackUrl) {
+        public static bool IsCallbackUrl(string url, string callbackUrl) {
             return url.StartsWith(callbackUrl);
         }
 
-        protected static AuthorizationEventArgs extractArgsFromUrlWhenReady(string url, string callbackUrl) {
-            if (isCallbackUrl(url, callbackUrl)) {
+        protected static AuthorizationEventArgs ExtractArgsFromUrlWhenReady(string url, string callbackUrl) {
+            if (IsCallbackUrl(url, callbackUrl)) {
                 url = url.Replace(callbackUrl, "");
                 url = url.Substring(1); // Remove leading # or ?
                 var queryParams = url.Split('&');
