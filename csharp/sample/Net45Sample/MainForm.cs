@@ -5,9 +5,9 @@ using System.Windows.Forms;
 namespace Net45Sample {
     public partial class MainForm : Form {
 
-        private static String SERVER_ENDPOINT = "https://nonweb.demo.surfconext.nl/php-oauth-as/authorize.php";
-        private static String CLIENT_ID = "4dca00da67c692296690e90c50c96b79";
-        private static String SCHEME = "sfoauth"; 
+        private static string SERVER_ENDPOINT = "https://nonweb.demo.surfconext.nl/php-oauth-as/authorize.php";
+        private static string CLIENT_ID = "kiu1p8hkyyytes06z12e1t";
+        private static string CALLBACK_URL = "https://nonweb.demo.surfconext.nl/php-oauth-as/manage.php"; 
 
         public MainForm() {
             InitializeComponent();
@@ -16,11 +16,16 @@ namespace Net45Sample {
         private void loginButton_Click(object sender, EventArgs e) {
             // Load the webpage
             WinFormsSSOManager.AuthorizationFinished += WinFormsSSOManager_AuthorizationFinished;
-            WinFormsSSOManager.authorize(this.browser, CLIENT_ID, SERVER_ENDPOINT, SCHEME);
+            WinFormsSSOManager.Authorize(this.browser, CLIENT_ID, SERVER_ENDPOINT, CALLBACK_URL);
         }
 
         private void WinFormsSSOManager_AuthorizationFinished(object sender, AuthorizationEventArgs e) {
-            throw new NotImplementedException(e.Token);
+            this.browser.Navigate("about:blank");
+            if (e.IsSuccessful) {
+                this.result.Text = "SUCCESS - token is " + e.Token;
+            } else {
+                this.result.Text = "ERROR: " + e.ErrorType + " - " + e.ErrorMessage;
+            }
         }
     }
 }

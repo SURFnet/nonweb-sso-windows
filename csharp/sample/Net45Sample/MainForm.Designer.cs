@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             this.browser = new System.Windows.Forms.WebBrowser();
             this.loginButton = new System.Windows.Forms.Button();
+            this.result = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // browser
@@ -47,16 +48,27 @@
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
+            // result
+            // 
+            this.result.AutoSize = true;
+            this.result.Location = new System.Drawing.Point(128, 17);
+            this.result.Name = "result";
+            this.result.Size = new System.Drawing.Size(92, 13);
+            this.result.TabIndex = 2;
+            this.result.Text = "Waiting for login...";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(761, 333);
+            this.Controls.Add(this.result);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.browser);
             this.Name = "MainForm";
             this.Text = "Surfnet SSO Sample";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -64,6 +76,7 @@
 
         private System.Windows.Forms.WebBrowser browser;
         private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.Label result;
     }
 }
 

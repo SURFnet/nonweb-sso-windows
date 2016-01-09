@@ -80,11 +80,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\library\SurfnetSSO\SurfnetSSO.Platform.Net45\SurfnetSSO.Platform.Net45.csproj">
+    <ProjectReference Include="..\..\library\SurfnetSSO.Platform.Net45\SurfnetSSO.Platform.Net45.csproj">
       <Project>{a8c1df63-2c06-429c-8e77-951a1f46d5f4}</Project>
       <Name>SurfnetSSO.Platform.Net45</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\library\SurfnetSSO\SurfnetSSO\SurfnetSSO.csproj">
+    <ProjectReference Include="..\..\library\SurfnetSSO\SurfnetSSO.csproj">
       <Project>{b1d79e96-5d15-4a3c-9ab2-129a3d0c3ba9}</Project>
       <Name>SurfnetSSO</Name>
     </ProjectReference>
