@@ -1,10 +1,21 @@
 ﻿using System;
 
 namespace SurfnetSSO {
+    /// <summary>
+    /// Base class containing the common code for the SSO managers of each platform.
+    /// </summary>
     public class SSOManager {
 
+        /// <summary>
+        /// Event handler for distributing the event on the end of the authorization flow
+        /// </summary>
+        /// <param name="sender">Always null</param>
+        /// <param name="e">The event arguments containing the result of the authorization</param>
         public delegate void AuthorizationEventHandler(object sender, AuthorizationEventArgs e);
 
+        /// <summary>
+        /// Subscribe to this event to receive the result of the authorization flow.
+        /// </summary>
         public static event AuthorizationEventHandler AuthorizationFinished;
 
         /// <summary>
@@ -22,7 +33,7 @@ namespace SurfnetSSO {
                 throw new ArgumentNullException("Endpoint can not be empty!");
             }
             if (string.IsNullOrEmpty(callbackUrl)) {
-                throw new ArgumentNullException("Scheme can not be empty!");
+                throw new ArgumentNullException("Callback URL can not be empty!");
             }
             string url = _addQueryParameter(endpoint, "client_id", consumerId);
             url = _addQueryParameter(url, "response_type", "token");
@@ -31,10 +42,25 @@ namespace SurfnetSSO {
             return new Uri(url, UriKind.Absolute);
         }
 
+        /// <summary>
+        /// Checks if the current URL is the callback URL the client has been waiting for.
+        /// </summary>
+        /// <param name="url">The URL to check</param>
+        /// <param name="callbackUrl">The callback URL of the client</param>
+        /// <returns></returns>
         public static bool IsCallbackUrl(string url, string callbackUrl) {
             return url.StartsWith(callbackUrl);
         }
 
+        /// <summary>
+        /// Extracts the OAuth2 parameters from the URL at the end of the flow,
+        /// and converts it into the event arguments the application is expecting.
+        /// </summary>
+        /// <param name="url">The URL to extract from</param>
+        /// <param name="callbackUrl">The callback URL. If null, there will be no check if the current URL
+        /// is the callback URL the client is waiting for.</param>
+        /// <returns>Null if the input URL is not the callback URL (yet). Otherwise the arguments containing
+        /// the result of the authorization flow.</returns>
         protected static AuthorizationEventArgs ExtractArgsFromUrlWhenReady(string url, string callbackUrl) {
             if (callbackUrl != null && IsCallbackUrl(url, callbackUrl) || callbackUrl == null) {
                 url = callbackUrl == null ? url.Substring(url.IndexOf("#")) : url.Replace(callbackUrl, "");
@@ -58,6 +84,14 @@ namespace SurfnetSSO {
             }
             return null;
         }
+
+        /// <summary>
+        /// Adds a query parameter to the input URL.
+        /// </summary>
+        /// <param name="url">The URL to append to</param>
+        /// <param name="key">The key of the query parameter</param>
+        /// <param name="value">The value of the query parameter</param>
+        /// <returns>The URL with the appended query parameter</returns>
         private static string _addQueryParameter(string url, string key, string value) {
             string result = url;
             if (url.Contains("?")) {
@@ -69,9 +103,14 @@ namespace SurfnetSSO {
             return result;
         }
 
+        /// <summary>
+        ///  Internal method for emitting the event from a platform-specific SSO manager at the end of the flow.
+        /// </summary>
+        /// <param name="args">The arguments containing the result</param>
         protected static void OnAuthorizationFinished(AuthorizationEventArgs args) {
             AuthorizationEventHandler handler = AuthorizationFinished;
             if (handler != null) {
+                // Emits the event
                 handler(null, args);
             }
         }
