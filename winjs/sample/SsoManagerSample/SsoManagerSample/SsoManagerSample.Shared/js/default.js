@@ -1,6 +1,4 @@
-﻿// For an introduction to the Blank template, see the following documentation:
-// http://go.microsoft.com/fwlink/?LinkID=392286
-(function () {
+﻿(function () {
     "use strict";
 
     var app = WinJS.Application;
