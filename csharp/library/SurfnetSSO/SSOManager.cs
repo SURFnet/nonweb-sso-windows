@@ -36,8 +36,8 @@ namespace SurfnetSSO {
         }
 
         protected static AuthorizationEventArgs ExtractArgsFromUrlWhenReady(string url, string callbackUrl) {
-            if (IsCallbackUrl(url, callbackUrl)) {
-                url = url.Replace(callbackUrl, "");
+            if (callbackUrl != null && IsCallbackUrl(url, callbackUrl) || callbackUrl == null) {
+                url = callbackUrl == null ? url.Substring(url.IndexOf("#")) : url.Replace(callbackUrl, "");
                 url = url.Substring(1); // Remove leading # or ?
                 var queryParams = url.Split('&');
                 string token = null, errorType = null, errorMessage = null;
