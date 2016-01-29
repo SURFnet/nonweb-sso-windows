@@ -18,6 +18,12 @@ SURFnet SSO Authentication library for Windows (WinJS)
     }
     ```
     This is only needed when you are also targeting Windows Phone.
+
+    Secondly, in your `default.html` include the `SSOManager.js` file, for example like:
+
+        <script src="/js/SSOManager.js"></script>
+    
+
 5. Last thing remaining is adding the call for starting the SSO authentication. For this you need to use:
     
     ```javascript
